@@ -1,3 +1,8 @@
+# Initialise oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
 # Initialise chruby
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
 # Enable auto-switching of Ruby versions when changing directories
