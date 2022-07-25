@@ -1,0 +1,4 @@
+#!/bin/bash
+
+stow --verbose=2 -d $HOME/.dotfiles -t $HOME nvim
+stow --verbose=2 -d $HOME/.dotfiles -t $HOME zsh
