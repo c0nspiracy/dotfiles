@@ -1,6 +1,6 @@
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(git)
+plugins=(git last-working-dir)
 source $ZSH/oh-my-zsh.sh
 
 # Initialise chruby
