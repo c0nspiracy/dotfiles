@@ -11,9 +11,6 @@ source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
 # Initialise the Starship prompt
 eval "$(starship init zsh)"
 
-# Initialise direnv hooks
-eval "$(direnv hook zsh)"
-
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_VAULT_PROMPT=osascript
 export AWS_SDK_LOAD_CONFIG=1
@@ -24,3 +21,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Initialise zoxide
 eval "$(zoxide init zsh)"
+
+# Initialise direnv hooks
+eval "$(direnv hook zsh)"
