@@ -6,6 +6,7 @@ local api = vim.api
 api.nvim_set_option("termguicolors", true)
 vim.opt.relativenumber = true
 vim.opt.number = true
+vim.opt.smartcase = true
 
 -- packages
 try_require('pack')
