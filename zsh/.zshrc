@@ -26,3 +26,5 @@ eval "$(zoxide init zsh)"
 
 # Initialise direnv hooks
 eval "$(direnv hook zsh)"
+
+alias vim=nvim
