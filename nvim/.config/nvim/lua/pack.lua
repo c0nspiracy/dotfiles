@@ -28,9 +28,6 @@ return require('packer').startup({
     use('nvim-lua/plenary.nvim')
     use('nvim-lua/popup.nvim')
 
-    -- file
-    --use('mhinz/vim-startify') -- startup page
-
     -- lsp
     use('neovim/nvim-lspconfig') -- Collection of configurations for the built-in LSP client
 
@@ -55,7 +52,6 @@ return require('packer').startup({
     use('ggandor/lightspeed.nvim')
 
     -- testing
-    -- use('vim-test/vim-test')
     use {
       'nvim-neotest/neotest',
       requires = {

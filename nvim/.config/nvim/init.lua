@@ -1,8 +1,6 @@
 local try_require = require('common').try_require
 local api = vim.api
 
--- api.nvim_set_option("number", true)
--- api.nvim_set_option("relativenumber", true)
 api.nvim_set_option("termguicolors", true)
 vim.opt.relativenumber = true
 vim.opt.number = true
