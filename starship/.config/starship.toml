@@ -1,0 +1,2 @@
+# Allow 1 second for commands to execute
+command_timeout = 1000
