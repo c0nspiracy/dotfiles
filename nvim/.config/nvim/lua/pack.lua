@@ -98,6 +98,8 @@ return require('packer').startup({
     use('rlue/vim-fold-rspec')
     use('pedrohdz/vim-yaml-folds')
 
+    use('mechatroner/rainbow_csv')
+
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then
       require('packer').sync()
