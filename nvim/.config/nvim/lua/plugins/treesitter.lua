@@ -1,8 +1,10 @@
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
-		"ruby",
+    "ruby",
     "html",
-    "css"
+    "css",
+    "javascript",
+    "lua",
   },
   context_commentstring = {
     enable = true
@@ -44,3 +46,4 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+-- vim: ts=2 sts=2 sw=2 et
