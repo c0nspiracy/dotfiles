@@ -3,9 +3,7 @@ local api = vim.api
 
 require "user.options"
 require "user.keymaps"
-
--- packages
-try_require('pack')
+require "user.plugins"
 
 -- plugins
 try_require('plugins.gruvbox')
