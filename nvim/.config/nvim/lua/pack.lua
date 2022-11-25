@@ -32,6 +32,7 @@ return require('packer').startup({
     -- treesitter
     use('nvim-treesitter/nvim-treesitter')
     use('nvim-treesitter/nvim-treesitter-textobjects')
+    use('nvim-treesitter/playground')
 
     use {
       'nvim-telescope/telescope.nvim',
