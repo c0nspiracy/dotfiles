@@ -28,3 +28,6 @@ keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
 
 keymap("n", "]c", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "[c", ":Gitsigns prev_hunk<CR>", opts)
+
+-- Toggle split/join on a block of code
+keymap("n", "<Leader>j", ":TSJToggle<CR>", opts)

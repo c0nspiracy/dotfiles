@@ -15,5 +15,6 @@ try_require('plugins.treesitter')
 try_require('plugins.lualine')
 try_require('plugins.gitsigns')
 try_require('plugins.neotest')
+try_require('plugins.treesj')
 
 vim.cmd("autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab")

@@ -110,6 +110,12 @@ return require('packer').startup({
       end
     }
 
+    -- TreeSJ: split or join blocks of code
+    use({
+      'Wansmer/treesj',
+      requires = { 'nvim-treesitter' },
+    })
+
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then
       require('packer').sync()
