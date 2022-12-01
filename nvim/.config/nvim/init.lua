@@ -4,9 +4,9 @@ local api = vim.api
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
+require "user.colorscheme"
 
 -- plugins
-try_require('plugins.gruvbox')
 try_require('plugins.lspconfig')
 try_require('plugins.telescope')
 try_require('plugins.treesitter')

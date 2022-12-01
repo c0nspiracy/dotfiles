@@ -47,7 +47,7 @@ return packer.startup(function(use)
   use("tpope/vim-sensible")
 
   -- colorscheme
-  use("gruvbox-community/gruvbox")
+  use("folke/tokyonight.nvim")
 
   -- status line
   use {
