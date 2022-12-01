@@ -75,6 +75,13 @@ return packer.startup(function(use)
     "nvim-telescope/telescope-fzf-native.nvim",
     run = "make"
   }
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require("telescope").load_extension("frecency")
+    end,
+    requires = {"kkharji/sqlite.lua"}
+  }
 
   use {
     "lewis6991/gitsigns.nvim",
