@@ -157,6 +157,13 @@ return packer.startup(function(use)
     requires = { "nvim-treesitter" },
   })
 
+  use {
+    "bkad/CamelCaseMotion",
+    config = function()
+      vim.g.camelcasemotion_key = "<Leader>"
+    end
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
     require("packer").sync()
