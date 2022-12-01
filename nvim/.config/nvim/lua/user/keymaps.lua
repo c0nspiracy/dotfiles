@@ -32,3 +32,5 @@ keymap("n", "[c", ":Gitsigns prev_hunk<CR>", opts)
 
 -- Toggle split/join on a block of code
 keymap("n", "<Leader>j", ":TSJToggle<CR>", opts)
+
+keymap("n", "<Leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)

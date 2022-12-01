@@ -164,6 +164,11 @@ return packer.startup(function(use)
     end
   }
 
+  -- Fun stuff --
+  -- A useless plugin that might help you cope with stubbornly broken tests or
+  -- overall lack of sense in life
+  use "eandrju/cellular-automaton.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
     require("packer").sync()
