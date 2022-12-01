@@ -40,8 +40,9 @@ packer.init {
 
 -- Install plugins here
 return packer.startup(function(use)
-  -- have packer manage itself
-  use("wbthomason/packer.nvim")
+  use("wbthomason/packer.nvim") -- Have packer manage itself
+  use("nvim-lua/plenary.nvim")  -- An implementation of the Popup API from vim in Neovim
+  use("nvim-lua/popup.nvim")    -- Useful lua functions used by lots of plugins
 
   -- defaults
   use("tpope/vim-sensible")
@@ -49,15 +50,28 @@ return packer.startup(function(use)
   -- colorscheme
   use("folke/tokyonight.nvim")
 
+  -- cmp plugins
+  use("hrsh7th/nvim-cmp")         -- The completion plugin
+  use("hrsh7th/cmp-buffer")       -- buffer completions
+  use("hrsh7th/cmp-path")         -- path completions
+  use("hrsh7th/cmp-cmdline")      -- cmdline completions
+  use("saadparwaiz1/cmp_luasnip") -- snippet completions
+
+  -- snippets
+  use {
+    -- snippet engine
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip").filetype_extend("ruby", { "rails" })
+    end
+  }
+  use("rafamadriz/friendly-snippets")
+
   -- status line
   use {
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
-
-  -- lib
-  use("nvim-lua/plenary.nvim")
-  use("nvim-lua/popup.nvim")
 
   -- lsp
   use("neovim/nvim-lspconfig") -- Collection of configurations for the built-in LSP client

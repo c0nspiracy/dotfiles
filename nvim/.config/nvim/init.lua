@@ -1,10 +1,10 @@
 local try_require = require('common').try_require
-local api = vim.api
 
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
 require "user.colorscheme"
+require "user.cmp"
 
 -- plugins
 try_require('plugins.lspconfig')
