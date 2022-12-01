@@ -55,6 +55,7 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-buffer")       -- buffer completions
   use("hrsh7th/cmp-path")         -- path completions
   use("hrsh7th/cmp-cmdline")      -- cmdline completions
+  use("hrsh7th/cmp-nvim-lsp")     -- LSP completions
   use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
   -- snippets
@@ -73,7 +74,11 @@ return packer.startup(function(use)
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
 
-  -- lsp
+  -- LSP
+  use("williamboman/mason.nvim") -- Allows you to easily manage external editor
+                                 -- tooling such as LSP servers, DAP servers,
+                                 -- linters, and formatters through a single interface.
+  use("williamboman/mason-lspconfig.nvim")
   use("neovim/nvim-lspconfig") -- Collection of configurations for the built-in LSP client
 
   -- treesitter
