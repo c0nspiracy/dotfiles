@@ -140,6 +140,7 @@ return packer.startup(function(use)
   use("tpope/vim-surround")
   use("tpope/vim-rails")
   use("tpope/vim-unimpaired")
+  use("tpope/vim-fugitive")
 
   use {
     "folke/trouble.nvim",
