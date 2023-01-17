@@ -184,6 +184,14 @@ return packer.startup(function(use)
     end
   }
 
+  -- Highlight CSS colours
+  use {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end
+  }
+
   -- Fun stuff --
   -- A useless plugin that might help you cope with stubbornly broken tests or
   -- overall lack of sense in life
