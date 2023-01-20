@@ -1,4 +1,5 @@
 # Initialise oh-my-zsh
+ZSH_THEME="spaceship"
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(git last-working-dir)
 source $ZSH/oh-my-zsh.sh
@@ -7,9 +8,6 @@ source $ZSH/oh-my-zsh.sh
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
 # Enable auto-switching of Ruby versions when changing directories
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
-
-# Initialise the Starship prompt
-eval "$(starship init zsh)"
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_VAULT_PROMPT=osascript
