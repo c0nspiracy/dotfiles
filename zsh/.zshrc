@@ -6,6 +6,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Initialise chruby
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+chruby system
 # Enable auto-switching of Ruby versions when changing directories
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
 
