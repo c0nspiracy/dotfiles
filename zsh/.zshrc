@@ -1,3 +1,6 @@
+export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_PREFIX=$(brew --prefix)
+
 # Initialise oh-my-zsh
 ZSH_THEME="spaceship"
 export ZSH="$HOME/.oh-my-zsh"
