@@ -2,10 +2,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 export HOMEBREW_PREFIX=$(brew --prefix)
 
 # Initialise oh-my-zsh
-ZSH_THEME="spaceship"
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(git last-working-dir)
 source $ZSH/oh-my-zsh.sh
+source $HOMEBREW_PREFIX/opt/spaceship/spaceship.zsh
 
 # Initialise chruby
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
