@@ -1,2 +1,7 @@
 # Allow 1 second for commands to execute
 command_timeout = 1000
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = 'bold blue'
+symbol = '🅰 '
