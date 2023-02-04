@@ -195,6 +195,8 @@ return packer.startup(function(use)
     end
   }
 
+  use("mbbill/undotree")
+
   -- Fun stuff --
   -- A useless plugin that might help you cope with stubbornly broken tests or
   -- overall lack of sense in life
