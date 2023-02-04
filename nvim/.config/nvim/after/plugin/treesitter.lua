@@ -5,12 +5,14 @@ require('nvim-treesitter.configs').setup {
     "css",
     "javascript",
     "lua",
+    "rust",
   },
   context_commentstring = {
     enable = true
   },
   highlight = {
-    enable = true
+    enable = true,
+    additional_vim_regex_highlighting = false,
   },
   indent = {
     enable = true,
@@ -38,10 +40,10 @@ require('nvim-treesitter.configs').setup {
       enable = true,
 
       swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        ["<leader>."] = "@parameter.inner",
       },
       swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
+        ["<leader>,"] = "@parameter.inner",
       },
     },
   },
