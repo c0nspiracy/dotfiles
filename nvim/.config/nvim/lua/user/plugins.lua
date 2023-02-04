@@ -133,6 +133,9 @@ return packer.startup(function(use)
     end
   }
 
+  -- file navigation
+  use("theprimeagen/harpoon")
+
   use("andymass/vim-matchup")
 
   use("tpope/vim-abolish")
