@@ -1,5 +1,5 @@
 export HOMEBREW_PREFIX="/opt/homebrew"
-export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOME/.local/scripts:$PATH"
 
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -37,3 +37,5 @@ alias la="exa --long --icons --git --all"
 eval "$(starship init zsh)"
 
 export KITMAN_DEV_HOME=/Users/robertnewbould/dev
+
+bindkey -s ^f "tmux-sessionizer\n"
