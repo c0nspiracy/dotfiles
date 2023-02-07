@@ -44,6 +44,8 @@ return packer.startup(function(use)
   use("nvim-lua/plenary.nvim")  -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/popup.nvim")    -- Useful lua functions used by lots of plugins
 
+  use("nvim-tree/nvim-web-devicons")
+
   -- defaults
   use("tpope/vim-sensible")
 
@@ -53,7 +55,7 @@ return packer.startup(function(use)
   -- status line
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }
+    requires = "nvim-web-devicons"
   }
 
   -- LSP
@@ -146,7 +148,7 @@ return packer.startup(function(use)
 
   use {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = "nvim-web-devicons",
     config = function()
       require("trouble").setup {
         -- your configuration comes here
