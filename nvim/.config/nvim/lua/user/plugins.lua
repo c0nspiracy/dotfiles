@@ -50,24 +50,6 @@ return packer.startup(function(use)
   -- colorscheme
   use("dracula/vim")
 
-  -- cmp plugins
-  use("hrsh7th/nvim-cmp")         -- The completion plugin
-  use("hrsh7th/cmp-buffer")       -- buffer completions
-  use("hrsh7th/cmp-path")         -- path completions
-  use("hrsh7th/cmp-cmdline")      -- cmdline completions
-  use("hrsh7th/cmp-nvim-lsp")     -- LSP completions
-  use("saadparwaiz1/cmp_luasnip") -- snippet completions
-
-  -- snippets
-  use {
-    -- snippet engine
-    "L3MON4D3/LuaSnip",
-    config = function()
-      require("luasnip").filetype_extend("ruby", { "rails" })
-    end
-  }
-  use("rafamadriz/friendly-snippets")
-
   -- status line
   use {
     "nvim-lualine/lualine.nvim",
@@ -75,11 +57,28 @@ return packer.startup(function(use)
   }
 
   -- LSP
-  use("williamboman/mason.nvim") -- Allows you to easily manage external editor
-                                 -- tooling such as LSP servers, DAP servers,
-                                 -- linters, and formatters through a single interface.
-  use("williamboman/mason-lspconfig.nvim")
-  use("neovim/nvim-lspconfig") -- Collection of configurations for the built-in LSP client
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v1.x',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {'williamboman/mason.nvim'},           -- Optional
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},         -- Required
+      {'hrsh7th/cmp-nvim-lsp'},     -- Required
+      {'hrsh7th/cmp-buffer'},       -- Optional
+      {'hrsh7th/cmp-path'},         -- Optional
+      {'saadparwaiz1/cmp_luasnip'}, -- Optional
+      {'hrsh7th/cmp-nvim-lua'},     -- Optional
+
+      -- Snippets
+      {'L3MON4D3/LuaSnip'},             -- Required
+      {'rafamadriz/friendly-snippets'}, -- Optional
+    }
+  }
 
   -- treesitter
   use("nvim-treesitter/nvim-treesitter")
