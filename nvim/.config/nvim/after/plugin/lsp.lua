@@ -4,7 +4,7 @@ lsp.preset('recommended')
 
 lsp.ensure_installed({
   'bashls',
-  'sumneko_lua',
+  'lua_ls',
   'rust_analyzer',
   'yamlls',
 })
