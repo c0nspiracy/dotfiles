@@ -220,6 +220,11 @@ return packer.startup(function(use)
     end,
   })
 
+  use({
+    'mrjones2014/dash.nvim',
+    run = 'make install',
+  })
+
   use {
     'kevinhwang91/nvim-ufo',
     requires = 'kevinhwang91/promise-async'

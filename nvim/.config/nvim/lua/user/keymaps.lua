@@ -30,6 +30,7 @@ keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<Leader>fG", ":Telescope grep_string<CR>", opts)
 keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<Leader>fr", ":Telescope frecency workspace=CWD<CR>", opts)
+keymap("n", "<Leader>fd", ":Telescope dash search<CR>", opts)
 
 keymap("n", "]c", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "[c", ":Gitsigns prev_hunk<CR>", opts)
