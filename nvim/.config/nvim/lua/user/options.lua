@@ -17,3 +17,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.opt.foldlevel = 99 -- Using ufo provider for folding requires a larger value than default
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
