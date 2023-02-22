@@ -223,6 +223,8 @@ return packer.startup(function(use)
     run = 'make install',
   })
 
+  use "christoomey/vim-tmux-navigator"
+
   use {
     'kevinhwang91/nvim-ufo',
     requires = 'kevinhwang91/promise-async'
