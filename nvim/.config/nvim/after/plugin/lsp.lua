@@ -34,3 +34,19 @@ end)
 lsp.nvim_workspace()
 
 lsp.setup()
+
+local null_ls = require("null-ls")
+local h = require("null-ls.helpers")
+local null_opts = lsp.build_options("null-ls", {})
+
+null_ls.setup({
+  debug = true,
+  on_attach = null_opts.on_attach,
+  sources = {
+    null_ls.builtins.diagnostics.rubocop.with({
+      command = "docker-rubocop",
+      args = { "-f", "json", "--force-exclusion", "--stdin", "$FILENAME" },
+      to_stdin = true,
+    })
+  }
+})

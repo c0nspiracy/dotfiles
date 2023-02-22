@@ -79,6 +79,10 @@ return packer.startup(function(use)
       -- Snippets
       {'L3MON4D3/LuaSnip'},             -- Required
       {'rafamadriz/friendly-snippets'}, -- Optional
+
+      -- Null-LS (hooks for non-LSP sources)
+      {'jose-elias-alvarez/null-ls.nvim'},
+      {'jay-babu/mason-null-ls.nvim'},
     }
   }
 

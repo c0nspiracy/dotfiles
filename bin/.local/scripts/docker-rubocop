@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Customize the following:
+# - escaped_path: absolute local path to your project
+# - container: name of your docker container
+escaped_path="\/Users\/robertnewbould\/dev\/medinah\/" # Be careful to properly escape this
+container="kitman-lde-medinah"
+
+#echo "${@}"
+
+# WARN: This will break if flags other than -o and -f are added in neotest-rspec
+# while getopts o:f: flag; do
+# 	# This deliberately does not handle all arguments
+# 	# shellcheck disable=SC2220
+# 	# shellcheck disable=SC2213
+# 	case "${flag}" in
+# 		o) output_path=${OPTARG} ;;
+# 	esac
+# done
+
+# Strip local path from test paths sent to container
+args=("${@/$escaped_path/}")
+
+# Replace output path with /tmp/rspec
+#args=("${args[@]/$output_path//tmp/rspec}")
+
+# Run rubocop
+docker exec -i "$container" bundle exec rubocop "${args[@]}" 2>/dev/null
