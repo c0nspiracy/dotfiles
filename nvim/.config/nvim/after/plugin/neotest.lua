@@ -1,8 +1,11 @@
+local neotest = require("neotest")
 local opts = { noremap = true, silent = true }
 
-require("neotest").setup({
+neotest.setup({
   adapters = {
-    require('neotest-rspec'),
+    require('neotest-rspec')({
+      rspec_cmd = "docker-rspec"
+    }),
     require('neotest-jest')({
       jestCommand = "yarn jest --"
     }),
