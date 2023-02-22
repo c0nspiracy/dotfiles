@@ -1,4 +1,7 @@
 local lsp = require('lsp-zero')
+local neodev = require("neodev")
+
+neodev.setup()
 
 lsp.preset('recommended')
 
