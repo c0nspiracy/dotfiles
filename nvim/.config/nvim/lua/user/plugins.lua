@@ -112,8 +112,6 @@ return packer.startup(function(use)
     requires = { "nvim-lua/plenary.nvim" }
   }
 
-  use("ggandor/lightspeed.nvim")
-
   -- testing
   use {
     "nvim-neotest/neotest",
