@@ -4,7 +4,7 @@ command_timeout = 1000
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
 style = "bold #ffb86c"
-symbol = '🅰 '
+symbol = '󰸏 '
 
 [character]
 error_symbol = "[❯](bold #ff5555)"
@@ -28,3 +28,12 @@ style = "bold #bd93f9"
 [username]
 format = "[$user]($style) on "
 style_user = "bold #8be9fd"
+
+[terraform]
+symbol = '󱁢 '
+
+[ruby]
+symbol = ' '
+
+[lua]
+symbol = '󰢱 '
