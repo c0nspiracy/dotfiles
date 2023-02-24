@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 if [[ $# -eq 1 ]]; then
     selected=$1
@@ -23,3 +23,5 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
 fi
 
 tmux switch-client -t $selected_name
+
+# vim: ts=4:sw=4:et
