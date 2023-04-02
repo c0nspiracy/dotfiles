@@ -183,12 +183,7 @@ return packer.startup(function(use)
     requires = { "nvim-treesitter" },
   })
 
-  use {
-    "bkad/CamelCaseMotion",
-    config = function()
-      vim.g.camelcasemotion_key = "<Leader>"
-    end
-  }
+  use("chrisgrieser/nvim-spider")
 
   -- Highlight CSS colours
   use {
