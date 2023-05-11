@@ -9,6 +9,7 @@ lsp.ensure_installed({
   'bashls',
   'lua_ls',
   'rust_analyzer',
+  'tsserver',
   'yamlls',
 })
 
@@ -25,18 +26,31 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
-lsp.on_attach(function(_, bufnr)
-  local opts = { buffer = bufnr, remap = false }
+-- lsp.on_attach(function(_, bufnr)
+--   local opts = { buffer = bufnr, remap = false }
 
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-end)
+--   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+--   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+--   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+--   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+-- end)
 
 lsp.nvim_workspace()
 
+lsp.configure('ruby_ls', {})
+
+lsp.skip_server_setup({'standardrb'})
+
 lsp.setup()
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
+})
 
 local null_ls = require("null-ls")
 local h = require("null-ls.helpers")
@@ -101,6 +115,9 @@ null_ls.setup({
   on_attach = null_opts.on_attach,
   sources = {
     null_ls.builtins.diagnostics.rubocop.with({
+      condition = function(_)
+        return vim.env.DOCKER_CONTAINER == 'kitman-lde-medinah'
+      end,
       command = "docker-rubocop",
       args = { "-f", "json", "--force-exclusion", "--stdin", "$FILENAME" },
       to_stdin = true,
