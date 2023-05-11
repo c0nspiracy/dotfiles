@@ -183,8 +183,6 @@ return packer.startup(function(use)
     requires = { "nvim-treesitter" },
   })
 
-  use("chrisgrieser/nvim-spider")
-
   -- Highlight CSS colours
   use {
     "norcalli/nvim-colorizer.lua",
