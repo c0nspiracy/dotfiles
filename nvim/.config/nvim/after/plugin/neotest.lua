@@ -10,6 +10,16 @@ neotest.setup({
       jestCommand = "yarn jest --"
     }),
   },
+  icons = {
+    failed = "✘", -- default 
+    passed = "✔", -- default 
+  },
+  status = {
+    -- virtual_text = true,
+  },
+  quickfix = {
+    open = false,
+  },
 })
 
 vim.keymap.set('n', '<leader>kn', function() neotest.run.run() end, opts)
