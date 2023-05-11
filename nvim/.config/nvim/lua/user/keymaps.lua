@@ -45,7 +45,7 @@ keymap("n", "<Leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 
-keymap("n", "J", "mzJ`z", opts)
+-- keymap("n", "J", "mzJ`z", opts)
 
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
