@@ -1,3 +1,6 @@
+export HOMEBREW_PREFIX="/opt/homebrew"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOME/.local/scripts:$HOME/.tgenv/bin:$PATH"
+
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
