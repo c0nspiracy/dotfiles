@@ -29,6 +29,17 @@ alias l="exa --icons"
 alias ll="exa --long --icons --git"
 alias la="exa --long --icons --git --all"
 
+function rspec-docker() {
+  docker exec -i -t -e COVERAGE=false -e RAILS_MAX_THREADS=2 $DOCKER_CONTAINER bundle exec rspec --no-profile "$@" 2>/dev/null
+}
+
+function rspec-bisect() {
+  files=$(xq "$@" -x /testsuite/testcase/@file | sort -u | paste -sd ' ' -)
+  seed=$(xq "$@" -x "/testsuite/properties/property[@name='seed']//@value")
+
+  docker exec -i -t -e COVERAGE=false $DOCKER_CONTAINER bundle exec rspec --no-profile --seed $seed --bisect "${=files}" 2>/dev/null
+}
+
 # Initialise starship prompt
 eval "$(starship init zsh)"
 

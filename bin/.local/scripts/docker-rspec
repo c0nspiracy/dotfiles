@@ -23,12 +23,12 @@ args=("${@/$escaped_path/}")
 args=("${args[@]/$output_path//tmp/rspec}")
 
 # Run the tests
-docker exec "$container" bundle exec rspec "${args[@]}" 2>/dev/null
+docker exec -it -e COVERAGE=false "$container" bundle exec rspec --no-profile --force-colour "${args[@]}" 2>/dev/null
 return_code=$?
 
 # Copy the test output from the container to the host
-docker cp "$container:/tmp/rspec" "$output_path"
+#docker cp "$container:/tmp/rspec" "$output_path"
 
-echo "Test results are available at $output_path"
+#echo "Test results are available at $output_path"
 
 exit $return_code
