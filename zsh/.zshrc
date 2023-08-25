@@ -16,6 +16,7 @@ plugins=(
   nvm
   docker
   rust
+  fzf-git
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -28,3 +29,6 @@ alias la="exa --long --icons --git --all"
 eval "$(starship init zsh)"
 
 bindkey -s ^f "tmux-sessionizer\n"
+
+# Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
+export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
