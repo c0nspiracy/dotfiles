@@ -1,9 +1,20 @@
-local lsp = require('lsp-zero')
+local lsp = require('lsp-zero').preset({})
+
+lsp.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp.default_keymaps({buffer = bufnr})
+end)
+
+lsp.setup()
+
+--[[
+local lsp = require('lsp-zero').preset({})
 local neodev = require("neodev")
 
 neodev.setup()
 
-lsp.preset('recommended')
+-- lsp.preset('recommended')
 
 lsp.ensure_installed({
   'bashls',
@@ -26,14 +37,20 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
--- lsp.on_attach(function(_, bufnr)
---   local opts = { buffer = bufnr, remap = false }
+lsp.on_attach(function(_, bufnr)
+  local opts = { buffer = bufnr, remap = false }
 
---   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
---   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
---   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
---   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
--- end)
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
 
 lsp.nvim_workspace()
 
@@ -116,7 +133,8 @@ null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.rubocop.with({
       condition = function(_)
-        return vim.env.DOCKER_CONTAINER == 'kitman-lde-medinah'
+        local docker_container = vim.env.DOCKER_CONTAINER
+        return docker_container~=nil and string.match(docker_container, 'kitman-lde-')
       end,
       command = "docker-rubocop",
       args = { "-f", "json", "--force-exclusion", "--stdin", "$FILENAME" },
@@ -125,3 +143,4 @@ null_ls.setup({
     })
   }
 })
+--]]
