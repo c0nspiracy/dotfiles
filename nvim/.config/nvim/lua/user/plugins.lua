@@ -185,9 +185,9 @@ return packer.startup(function(use)
 
   -- Highlight CSS colours
   use {
-    "norcalli/nvim-colorizer.lua",
+    "brenoprata10/nvim-highlight-colors",
     config = function()
-      require("colorizer").setup()
+      require("nvim-highlight-colors").setup()
     end
   }
 
