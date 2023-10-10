@@ -6,6 +6,18 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
+local lspconfig = require('lspconfig')
+local docker_container = vim.env.DOCKER_CONTAINER
+local kitman_lde = docker_container ~= nil and string.find(docker_container, '^kitman%-lde%-')
+lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
+  if kitman_lde and config.name == "rubocop" then
+    --vim.notify('inside lspconfig hook for ' .. config.name .. ', docker_container = ' .. docker_container .. ', kitman_lde = ' .. tostring(kitman_lde), vim.log.levels.DEBUG)
+    config.cmd = { "docker-rubocop", "-f", "json", "--force-exclusion", "--stdin", "$FILENAME" }
+  end
+end)
+
+lsp.skip_server_setup({'standardrb'})
+lsp.skip_server_setup({'ruby_ls'})
 lsp.setup()
 
 --[[
@@ -69,10 +81,6 @@ vim.diagnostic.config({
   float = true,
 })
 
-local null_ls = require("null-ls")
-local h = require("null-ls.helpers")
-local null_opts = lsp.build_options("null-ls", {})
-
 local offense_to_diagnostic = function(offense)
   local diagnostic = nil
 
@@ -127,6 +135,10 @@ local handle_rubocop_output = function(params)
   return {}
 end
 
+local null_ls = require("null-ls")
+local h = require("null-ls.helpers")
+local null_opts = lsp.build_options("null-ls", {})
+
 null_ls.setup({
   debug = true,
   on_attach = null_opts.on_attach,
@@ -143,4 +155,6 @@ null_ls.setup({
     })
   }
 })
+
 --]]
+
