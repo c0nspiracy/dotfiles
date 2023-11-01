@@ -7,9 +7,6 @@ return {
   -- defaults
   "tpope/vim-sensible",
 
-  -- colorscheme
-  "dracula/vim",
-
   -- status line
   {
     "nvim-lualine/lualine.nvim",
