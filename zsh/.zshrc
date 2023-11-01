@@ -48,8 +48,5 @@ bindkey -M emacs '^R' fzf-history-widget
 bindkey -M vicmd '^R' fzf-history-widget
 bindkey -M viins '^R' fzf-history-widget
 
-source /Users/robertnewbould/.config/broot/launcher/bash/br
-source /Users/robertnewbould/.config/op/plugins.sh
-
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
