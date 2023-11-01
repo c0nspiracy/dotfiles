@@ -19,6 +19,7 @@ plugins=(
   docker
   rust
   vi-mode
+  asdf
 )
 source $ZSH/oh-my-zsh.sh
 source $HOME/source/junegunn/fzf-git/fzf-git.sh
