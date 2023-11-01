@@ -3,7 +3,6 @@ export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOME/.local/scripts:$HO
 
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 plugins=(
   git
   last-working-dir
