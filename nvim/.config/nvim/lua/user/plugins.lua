@@ -1,68 +1,39 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer. Please close and re-open Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+require('lazy').setup({
+  "nvim-lua/plenary.nvim",  -- An implementation of the Popup API from vim in Neovim
+  "nvim-lua/popup.nvim",    -- Useful lua functions used by lots of plugins
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
--- Install plugins here
-return packer.startup(function(use)
-  use("wbthomason/packer.nvim") -- Have packer manage itself
-  use("nvim-lua/plenary.nvim")  -- An implementation of the Popup API from vim in Neovim
-  use("nvim-lua/popup.nvim")    -- Useful lua functions used by lots of plugins
-
-  use("nvim-tree/nvim-web-devicons")
+  "nvim-tree/nvim-web-devicons",
 
   -- defaults
-  use("tpope/vim-sensible")
+  "tpope/vim-sensible",
 
   -- colorscheme
-  use("dracula/vim")
+  "dracula/vim",
 
   -- status line
-  use {
+  {
     "nvim-lualine/lualine.nvim",
-    requires = "nvim-web-devicons"
-  }
+    dependencies = "nvim-web-devicons"
+  },
 
   -- LSP
-  use {
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
-    requires = {
+    dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
       {'williamboman/mason.nvim'},           -- Optional
@@ -84,47 +55,47 @@ return packer.startup(function(use)
       {'jose-elias-alvarez/null-ls.nvim'},
       {'jay-babu/mason-null-ls.nvim'},
     }
-  }
+  },
 
   -- treesitter
-  use("nvim-treesitter/nvim-treesitter")
-  use("nvim-treesitter/nvim-treesitter-textobjects")
-  use("nvim-treesitter/playground")
+  "nvim-treesitter/nvim-treesitter",
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  "nvim-treesitter/playground",
 
-  use {
+  {
     "nvim-telescope/telescope.nvim",
-    requires = { "nvim-lua/plenary.nvim" }
-  }
-  use {
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  {
     "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make"
-  }
-  use {
+    build = "make"
+  },
+  {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
       require("telescope").load_extension("frecency")
     end
-  }
+  },
 
-  use {
+  {
     "lewis6991/gitsigns.nvim",
-    requires = { "nvim-lua/plenary.nvim" }
-  }
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
 
   -- testing
-  use {
+  {
     "nvim-neotest/neotest",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       "olimorris/neotest-rspec",
       "haydenmeade/neotest-jest",
     }
-  }
+  },
 
   -- which-key
-  use {
+  {
     "folke/which-key.nvim",
     config = function()
       require("which-key").setup {
@@ -133,23 +104,23 @@ return packer.startup(function(use)
         -- refer to the configuration section below
       }
     end
-  }
+  },
 
   -- file navigation
-  use("theprimeagen/harpoon")
+  "theprimeagen/harpoon",
 
-  use("andymass/vim-matchup")
+  "andymass/vim-matchup",
 
-  use("tpope/vim-abolish")
-  use("tpope/vim-commentary")
-  use("tpope/vim-surround")
-  use("tpope/vim-rails")
-  use("tpope/vim-unimpaired")
-  use("tpope/vim-fugitive")
+  "tpope/vim-abolish",
+  "tpope/vim-commentary",
+  "tpope/vim-surround",
+  "tpope/vim-rails",
+  "tpope/vim-unimpaired",
+  "tpope/vim-fugitive",
 
-  use {
+  {
     "folke/trouble.nvim",
-    requires = "nvim-web-devicons",
+    dependencies = "nvim-web-devicons",
     config = function()
       require("trouble").setup {
         -- your configuration comes here
@@ -157,71 +128,66 @@ return packer.startup(function(use)
         -- refer to the configuration section below
       }
     end
-  }
+  },
 
-  use("rlue/vim-fold-rspec")
-  use("pedrohdz/vim-yaml-folds")
+  "rlue/vim-fold-rspec",
+  "pedrohdz/vim-yaml-folds",
 
-  use("mechatroner/rainbow_csv")
+  "mechatroner/rainbow_csv",
 
-  use {
+  {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("ibl").setup()
     end
-  }
+  },
 
   -- TreeSJ: split or join blocks of code
-  use({
+  {
     "Wansmer/treesj",
-    requires = { "nvim-treesitter" },
-  })
+    dependencies = { "nvim-treesitter" },
+  },
 
   -- Highlight CSS colours
-  use {
+  {
     "brenoprata10/nvim-highlight-colors",
     config = function()
       require("nvim-highlight-colors").setup()
     end
-  }
+  },
 
-  use("mbbill/undotree")
+  "mbbill/undotree",
 
   -- Fun stuff --
   -- A useless plugin that might help you cope with stubbornly broken tests or
   -- overall lack of sense in life
-  use "eandrju/cellular-automaton.nvim"
+  "eandrju/cellular-automaton.nvim",
 
-  use({
+  {
     "utilyre/barbecue.nvim",
-    tag = "*",
-    requires = {
+    name = "barbecue",
+    version = "*",
+    dependencies = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
-    after = "nvim-web-devicons", -- keep this if you're using NvChad
-    config = function()
-      require("barbecue").setup()
-    end,
-  })
+    opts = {
+      -- configurations go here
+    },
+  },
 
-  use({
+  {
     'mrjones2014/dash.nvim',
-    run = 'make install',
-  })
+    build = 'make install',
+  },
 
-  use "christoomey/vim-tmux-navigator"
+  "christoomey/vim-tmux-navigator",
 
-  use {
+  {
     'kevinhwang91/nvim-ufo',
-    requires = 'kevinhwang91/promise-async'
-  }
+    dependencies = 'kevinhwang91/promise-async'
+  },
 
-  use "folke/neodev.nvim"
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+  "folke/neodev.nvim",
+})
 -- vim: ts=2 sts=2 sw=2 et
