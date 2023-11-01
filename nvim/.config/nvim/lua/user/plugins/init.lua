@@ -1,17 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup({
+return {
   "nvim-lua/plenary.nvim",  -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/popup.nvim",    -- Useful lua functions used by lots of plugins
 
@@ -189,5 +176,4 @@ require('lazy').setup({
   },
 
   "folke/neodev.nvim",
-})
--- vim: ts=2 sts=2 sw=2 et
+}
