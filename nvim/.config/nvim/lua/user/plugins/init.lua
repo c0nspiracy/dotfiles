@@ -7,11 +7,6 @@ return {
   -- defaults
   "tpope/vim-sensible",
 
-  {
-    "lewis6991/gitsigns.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
-
   -- testing
   {
     "nvim-neotest/neotest",
