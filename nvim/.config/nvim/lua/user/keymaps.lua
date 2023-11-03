@@ -14,9 +14,6 @@ local keymap = vim.api.nvim_set_keymap
 -- Open explorer on the left-hand side
 keymap("n", "<Leader>pv", ":Lex 30<CR>", opts)
 
-keymap("n", "]c", ":Gitsigns next_hunk<CR>", opts)
-keymap("n", "[c", ":Gitsigns prev_hunk<CR>", opts)
-
 keymap("n", "<Leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 
 -- The Primeagen
