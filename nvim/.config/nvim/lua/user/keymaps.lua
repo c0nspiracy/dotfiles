@@ -36,7 +36,3 @@ keymap("n", "N", "Nzzzv", opts)
 
 keymap("n", "Q", "<nop>", opts)
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
-
--- Using ufo provider for folds needs `zR` and `zM` to be remapped.
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds, opts)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, opts)

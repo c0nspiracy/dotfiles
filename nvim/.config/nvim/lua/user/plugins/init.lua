@@ -100,10 +100,5 @@ return {
 
   "christoomey/vim-tmux-navigator",
 
-  {
-    'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async'
-  },
-
   "folke/neodev.nvim",
 }
