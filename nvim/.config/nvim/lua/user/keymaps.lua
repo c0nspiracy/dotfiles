@@ -11,13 +11,6 @@ local keymap = vim.api.nvim_set_keymap
 --   "t" - term mode
 --   "c" - command mode
 
--- Normal --
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-
 -- Open explorer on the left-hand side
 keymap("n", "<Leader>pv", ":Lex 30<CR>", opts)
 
