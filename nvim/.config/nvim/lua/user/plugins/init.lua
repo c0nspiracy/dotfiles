@@ -67,12 +67,6 @@ return {
     end
   },
 
-  -- TreeSJ: split or join blocks of code
-  {
-    "Wansmer/treesj",
-    dependencies = { "nvim-treesitter" },
-  },
-
   -- Highlight CSS colours
   {
     "brenoprata10/nvim-highlight-colors",
