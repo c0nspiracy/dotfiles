@@ -21,16 +21,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Open explorer on the left-hand side
 keymap("n", "<Leader>pv", ":Lex 30<CR>", opts)
 
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<C-p>", builtin.git_files, opts)
-vim.keymap.set("n", "<Leader>pf", function() builtin.find_files({ hidden = true }) end, opts)
-keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<Leader>fG", ":Telescope grep_string<CR>", opts)
-keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<Leader>fr", ":Telescope frecency workspace=CWD<CR>", opts)
-keymap("n", "<Leader>fd", ":Telescope dash search<CR>", opts)
-keymap("n", "<Leader>fD", ":DashWord<CR>", opts)
-
 keymap("n", "]c", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "[c", ":Gitsigns prev_hunk<CR>", opts)
 
