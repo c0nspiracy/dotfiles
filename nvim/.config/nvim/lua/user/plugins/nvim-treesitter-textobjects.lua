@@ -1,38 +1,8 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  "nvim-treesitter/playground",
-  build = ":TSUpdate",
-  event = { "BufReadPre", "BufNewFile" },
+  lazy = true,
   config = function()
-    local treesitter = require("nvim-treesitter.configs")
-
-    vim.opt.foldmethod = expr
-    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-    treesitter.setup({
-      ensure_installed = {
-        "ruby",
-        "html",
-        "css",
-        "javascript",
-        "lua",
-        "rust",
-      },
-      context_commentstring = {
-        enable = true
-      },
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-      },
-      indent = {
-        enable = true,
-        disable = { "ruby" }
-      },
-      matchup = {
-        enable = true
-      },
+    require("nvim-treesitter.configs").setup({
       textobjects = {
         select = {
           enable = true,
