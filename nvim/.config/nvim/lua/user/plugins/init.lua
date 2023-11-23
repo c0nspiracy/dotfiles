@@ -19,18 +19,6 @@ return {
   "tpope/vim-unimpaired",
   "tpope/vim-fugitive",
 
-  {
-    "folke/trouble.nvim",
-    dependencies = "nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  },
-
   "rlue/vim-fold-rspec",
   "pedrohdz/vim-yaml-folds",
 
