@@ -7,18 +7,6 @@ return {
   -- defaults
   "tpope/vim-sensible",
 
-  -- testing
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      "olimorris/neotest-rspec",
-      "haydenmeade/neotest-jest",
-    }
-  },
-
   -- which-key
   {
     "folke/which-key.nvim",
