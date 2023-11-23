@@ -17,7 +17,6 @@ return {
   "tpope/vim-surround",
   "tpope/vim-rails",
   "tpope/vim-unimpaired",
-  "tpope/vim-fugitive",
 
   "rlue/vim-fold-rspec",
   "pedrohdz/vim-yaml-folds",
