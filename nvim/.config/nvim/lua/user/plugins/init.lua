@@ -23,14 +23,6 @@ return {
 
   "mechatroner/rainbow_csv",
 
-  -- Highlight CSS colours
-  {
-    "brenoprata10/nvim-highlight-colors",
-    config = function()
-      require("nvim-highlight-colors").setup()
-    end
-  },
-
   -- Fun stuff --
   -- A useless plugin that might help you cope with stubbornly broken tests or
   -- overall lack of sense in life
