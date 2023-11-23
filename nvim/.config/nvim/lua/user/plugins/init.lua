@@ -23,13 +23,6 @@ return {
 
   "mechatroner/rainbow_csv",
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("ibl").setup()
-    end
-  },
-
   -- Highlight CSS colours
   {
     "brenoprata10/nvim-highlight-colors",
