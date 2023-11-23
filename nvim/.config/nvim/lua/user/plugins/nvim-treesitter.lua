@@ -30,9 +30,6 @@ return {
         enable = true,
         disable = { "ruby" }
       },
-      matchup = {
-        enable = true
-      },
     })
   end
 }

@@ -10,8 +10,6 @@ return {
   -- file navigation
   "theprimeagen/harpoon",
 
-  "andymass/vim-matchup",
-
   "tpope/vim-abolish",
   "tpope/vim-commentary",
   "tpope/vim-surround",
