@@ -46,14 +46,13 @@ return {
 
       -- Set keymaps
       local builtin = require("telescope.builtin")
-      local keymap = vim.keymap
 
-      keymap.set("n", "<C-p>", builtin.git_files, opts)
-      keymap.set("n", "<Leader>pf", function() builtin.find_files({ hidden = true }) end, opts)
-      keymap.set("n", "<Leader>fg", ":Telescope live_grep<CR>", { desc = "Fuzzy find files in cwd" })
-      keymap.set("n", "<Leader>fG", ":Telescope grep_string<CR>", opts)
-      keymap.set("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
-      keymap.set("n", "<Leader>fr", ":Telescope frecency workspace=CWD<CR>", opts)
+      vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy find files in git repository" })
+      vim.keymap.set("n", "<Leader>pf", function() builtin.find_files({ hidden = true }) end, { desc = "Fuzzy find files in cwd" })
+      vim.keymap.set("n", "<Leader>fg", ":Telescope live_grep<CR>", { desc = "Live grep through files in cwd" })
+      vim.keymap.set("n", "<Leader>fG", ":Telescope grep_string<CR>", { desc = "Live grep for word under cursor in cwd" })
+      vim.keymap.set("n", "<Leader>fb", ":Telescope buffers<CR>", { desc = "Fuzzy find over buffers" })
+      vim.keymap.set("n", "<Leader>fr", ":Telescope frecency workspace=CWD<CR>", { desc = "Fuzzy find over recently accessed files" })
       -- keymap.set("n", "<Leader>fd", ":Telescope dash search<CR>", opts)
       -- keymap.set("n", "<Leader>fD", ":DashWord<CR>", opts)
    end,
