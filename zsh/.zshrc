@@ -1,6 +1,10 @@
 export HOMEBREW_PREFIX="/opt/homebrew"
 export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOME/.local/scripts:$HOME/.tgenv/bin:$PATH"
 
+# Make Homebrew's completions available to zsh
+# See https://docs.brew.sh/Shell-Completion
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(
