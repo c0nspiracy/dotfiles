@@ -10,20 +10,20 @@ return {
   -- file navigation
   "theprimeagen/harpoon",
 
+  -- tpope
   "tpope/vim-abolish",
   "tpope/vim-commentary",
   "tpope/vim-surround",
   "tpope/vim-rails",
   "tpope/vim-unimpaired",
 
+  -- folding
   "rlue/vim-fold-rspec",
   "pedrohdz/vim-yaml-folds",
 
   "mechatroner/rainbow_csv",
 
   -- Fun stuff --
-  -- A useless plugin that might help you cope with stubbornly broken tests or
-  -- overall lack of sense in life
   "eandrju/cellular-automaton.nvim",
 
   {
