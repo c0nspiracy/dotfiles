@@ -18,7 +18,7 @@ require("lazy").setup(
   },
   {
     install = {
-      colorscheme = { "dracula" },
+      colorscheme = { "catppuccin-mocha" },
     },
     checker = {
       enabled = true,
