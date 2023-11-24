@@ -32,6 +32,4 @@ return {
   },
 
   "christoomey/vim-tmux-navigator",
-
-  "folke/neodev.nvim",
 }
