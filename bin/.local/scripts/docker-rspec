@@ -3,8 +3,8 @@
 # Customize the following:
 # - escaped_path: absolute local path to your project
 # - container: name of your docker container
-escaped_path="\/Users\/robertnewbould\/dev\/medinah\/" # Be careful to properly escape this
-container="kitman-lde-medinah"
+escaped_path="\/Users\/robertnewbould\/dev\/MindfulChef-API\/" # Be careful to properly escape this
+container="app"
 
 # WARN: This will break if flags other than -o and -f are added in neotest-rspec
 while getopts o:f: flag; do
@@ -23,7 +23,7 @@ args=("${@/$escaped_path/}")
 args=("${args[@]/$output_path//tmp/rspec}")
 
 # Run the tests
-docker exec -it -e COVERAGE=false "$container" bundle exec rspec --no-profile --force-colour "${args[@]}" 2>/dev/null
+docker-compose run -e RAILS_ENV=test --rm "$container" bundle exec rspec "${args[@]}"
 return_code=$?
 
 # Copy the test output from the container to the host

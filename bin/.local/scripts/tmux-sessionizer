@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    projects=$(find ~/dev ~/personal -mindepth 1 -maxdepth 1 -type d | sed -e "s,$HOME/,,")
+    projects=$(find ~/dev/mindful-chef ~/personal -mindepth 1 -maxdepth 1 -type d | sed -e "s,$HOME/,,")
     dotfiles=$(find ~/.dotfiles -maxdepth 1 -type d | sed -e "s,$HOME/,,")
     sessions=$(tmux list-sessions -F '#{session_name}')
     selected=$(printf "%s\n" "${projects[@]}" "${dotfiles[@]}" "${sessions[@]}" | sort -u | fzf --prompt=" tmux session » ")
