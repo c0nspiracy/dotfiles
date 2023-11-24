@@ -7,9 +7,6 @@ return {
   -- defaults
   "tpope/vim-sensible",
 
-  -- file navigation
-  "theprimeagen/harpoon",
-
   -- tpope
   "tpope/vim-abolish",
   "tpope/vim-commentary",
