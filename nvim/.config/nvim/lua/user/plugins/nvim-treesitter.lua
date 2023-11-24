@@ -1,15 +1,16 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  "nvim-treesitter/playground",
   build = ":TSUpdate",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/playground",
   },
   config = function()
-    vim.opt.foldmethod = expr
+    vim.opt.foldmethod = "expr"
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+    ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "ruby",
@@ -18,6 +19,8 @@ return {
         "javascript",
         "lua",
         "rust",
+        "yaml",
+        "json",
       },
       context_commentstring = {
         enable = true
@@ -29,6 +32,12 @@ return {
       indent = {
         enable = true,
         disable = { "ruby" }
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-space>",
+        },
       },
     })
   end
