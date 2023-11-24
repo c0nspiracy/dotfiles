@@ -53,8 +53,6 @@ return {
       vim.keymap.set("n", "<Leader>fG", ":Telescope grep_string<CR>", { desc = "Live grep for word under cursor in cwd" })
       vim.keymap.set("n", "<Leader>fb", ":Telescope buffers<CR>", { desc = "Fuzzy find over buffers" })
       vim.keymap.set("n", "<Leader>fr", ":Telescope frecency workspace=CWD<CR>", { desc = "Fuzzy find over recently accessed files" })
-      -- keymap.set("n", "<Leader>fd", ":Telescope dash search<CR>", opts)
-      -- keymap.set("n", "<Leader>fD", ":DashWord<CR>", opts)
    end,
   },
   {

@@ -23,10 +23,5 @@ return {
   -- Fun stuff --
   "eandrju/cellular-automaton.nvim",
 
-  {
-    'mrjones2014/dash.nvim',
-    build = 'make install',
-  },
-
   "christoomey/vim-tmux-navigator",
 }
