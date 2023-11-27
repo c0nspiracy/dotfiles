@@ -8,10 +8,14 @@ if [ -e "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
 	mv "$HOME/.zshrc" "$HOME/.zshrc-pre-stow"
 fi
 
-stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" bat
-stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" irb
-stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" nvim
-stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" script
-stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" starship
-stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" tmux
-stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" zsh
+stow_directory() {
+	stow --verbose=2 --dotfiles -d "$HOME/.dotfiles" -t "$HOME" $1
+}
+
+stow_directory "irb"
+stow_directory "nvim"
+stow_directory "script"
+stow_directory "starship"
+stow_directory "tmux"
+stow_directory "wezterm"
+stow_directory "zsh"
