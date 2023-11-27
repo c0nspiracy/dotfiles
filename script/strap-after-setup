@@ -1,5 +1,11 @@
 #!/bin/bash
 
-stow --verbose=2 -d $HOME/.dotfiles -t $HOME nvim
-stow --verbose=2 -d $HOME/.dotfiles -t $HOME zsh
-stow --verbose=2 -d $HOME/.dotfiles -t $HOME bat
+set -e
+
+stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" bat
+stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" irb
+stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" nvim
+stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" scripts
+stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" starship
+stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" tmux
+stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" zsh
