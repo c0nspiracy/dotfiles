@@ -2,6 +2,12 @@
 
 set -e
 
+# Mac OS comes with zsh, so move the existing zshrc if it exists
+if [ -e "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+	echo ".zshrc exists and is not a symlink, moving it to .zshrc-pre-stow"
+	mv "$HOME/.zshrc" "$HOME/.zshrc-pre-stow"
+fi
+
 stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" bat
 stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" irb
 stow --verbose=2 -d "$HOME/.dotfiles" -t "$HOME" nvim
