@@ -1,33 +1,33 @@
 # Allow 1 second for commands to execute
 command_timeout = 1000
 
-[aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = "bold #ffb86c"
-symbol = '󰸏 '
+# [aws]
+# format = 'on [$symbol($profile )(\($region\) )]($style)'
+# style = "bold #ffb86c"
+# symbol = '󰸏 '
 
-[character]
-error_symbol = "[❯](bold #ff5555)"
-success_symbol = "[❯](bold #50fa7b)"
+# [character]
+# error_symbol = "[❯](bold #ff5555)"
+# success_symbol = "[❯](bold #50fa7b)"
 
-[cmd_duration]
-style = "bold #f1fa8c"
+# [cmd_duration]
+# style = "bold #f1fa8c"
 
-[directory]
-style = "bold #50fa7b"
+# [directory]
+# style = "bold #50fa7b"
 
-[git_branch]
-style = "bold #ff79c6"
+# [git_branch]
+# style = "bold #ff79c6"
 
-[git_status]
-style = "bold #ff5555"
+# [git_status]
+# style = "bold #ff5555"
 
-[hostname]
-style = "bold #bd93f9"
+# [hostname]
+# style = "bold #bd93f9"
 
-[username]
-format = "[$user]($style) on "
-style_user = "bold #8be9fd"
+# [username]
+# format = "[$user]($style) on "
+# style_user = "bold #8be9fd"
 
 [terraform]
 symbol = '󱁢 '
