@@ -5,6 +5,10 @@ export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOME/.local/scripts:$HO
 # See https://docs.brew.sh/Shell-Completion
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
+HISTFILE=~/.zsh_history
+HISTSIZE=500000
+SAVEHIST=$HISTSIZE
+
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(
