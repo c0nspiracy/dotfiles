@@ -9,6 +9,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=500000
 SAVEHIST=$HISTSIZE
 
+# Don't dump completion caches to $HOME
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(
