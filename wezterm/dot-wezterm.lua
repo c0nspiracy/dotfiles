@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
 return {
-  font = wezterm.font("VictorMono Nerd Font"),
+  font = wezterm.font("VictorMono Nerd Font", { weight = "Medium" }),
   font_size = 18.0,
   color_scheme = "Catppuccin Macchiato",
   enable_tab_bar = false,
