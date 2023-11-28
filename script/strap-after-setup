@@ -13,6 +13,7 @@ stow_directory() {
 }
 
 stow_directory "asdf"
+stow_directory "brew-aliases"
 stow_directory "irb"
 stow_directory "nvim"
 stow_directory "script"

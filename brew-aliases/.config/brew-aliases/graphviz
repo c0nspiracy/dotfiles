@@ -1,0 +1,6 @@
+#! /bin/bash
+# alias: brew graphviz
+#:  * `graphviz` [args...]
+#:    `brew graphviz` is an alias for `brew graph --installed --highlight-leaves | docker run --rm -i backplane/graphviz fdp -T png | open -a Preview.app -f`
+brew graph --installed --highlight-leaves | docker run --rm -i backplane/graphviz fdp -T png | open -a Preview.app -f $*
+
