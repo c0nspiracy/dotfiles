@@ -20,3 +20,9 @@ stow_directory "starship"
 stow_directory "tmux"
 stow_directory "wezterm"
 stow_directory "zsh"
+
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin add rust https://github.com/code-lever/asdf-rust.git
+
+asdf install
