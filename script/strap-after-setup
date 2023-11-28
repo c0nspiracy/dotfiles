@@ -9,7 +9,7 @@ if [ -e "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
 fi
 
 stow_directory() {
-	stow --verbose=2 --dotfiles -d "$HOME/.dotfiles" -t "$HOME" $1
+	stow --verbose --dotfiles -d "$HOME/.dotfiles" -t "$HOME" $1
 }
 
 stow_directory "asdf"
