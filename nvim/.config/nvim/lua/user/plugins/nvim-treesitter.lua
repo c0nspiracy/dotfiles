@@ -13,14 +13,15 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
-        "ruby",
-        "html",
         "css",
+        "html",
         "javascript",
-        "lua",
-        "rust",
-        "yaml",
         "json",
+        "lua",
+        "ruby",
+        "rust",
+        "sql",
+        "yaml",
       },
       context_commentstring = {
         enable = true
@@ -31,7 +32,6 @@ return {
       },
       indent = {
         enable = true,
-        disable = { "ruby" }
       },
       incremental_selection = {
         enable = true,
