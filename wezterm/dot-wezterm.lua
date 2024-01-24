@@ -1,7 +1,22 @@
 local wezterm = require("wezterm")
 
+local fonts = {
+  victor_mono = wezterm.font {
+    family = "VictorMono Nerd Font",
+    weight = "Medium",
+  },
+  berkeley_mono = wezterm.font {
+    family = "Berkeley Mono",
+    weight = "Regular",
+    harfbuzz_features = {
+      'ss01=1', -- Slashed zero (0)
+      'ss06=1', -- Slashed seven (7)
+    },
+  },
+}
+
 return {
-  font = wezterm.font("VictorMono Nerd Font", { weight = "Medium" }),
+  font = fonts.victor_mono,
   font_size = 18.0,
   color_scheme = "Catppuccin Macchiato",
   enable_tab_bar = true,
