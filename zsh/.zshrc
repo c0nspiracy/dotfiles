@@ -1,5 +1,5 @@
 export HOMEBREW_PREFIX="/opt/homebrew"
-export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOME/.local/scripts:$HOME/.tgenv/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/opt/postgresql@13/bin:$HOME/.local/scripts:$HOME/.tgenv/bin:$PATH"
 
 # Make Homebrew's completions available to zsh
 # See https://docs.brew.sh/Shell-Completion
@@ -15,6 +15,7 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 # Initialise oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(
+  asdf
   git
   last-working-dir
   zoxide
@@ -28,9 +29,7 @@ plugins=(
   zsh-autosuggestions
   nvm
   docker
-  rust
   vi-mode
-  asdf
 )
 source $ZSH/oh-my-zsh.sh
 source $HOME/source/junegunn/fzf-git/fzf-git.sh
