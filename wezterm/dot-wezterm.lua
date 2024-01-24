@@ -22,4 +22,6 @@ return {
   enable_tab_bar = true,
   hide_tab_bar_if_only_one_tab = true,
   send_composed_key_when_left_alt_is_pressed = true,
+  adjust_window_size_when_changing_font_size = false,
+  window_decorations = "RESIZE",
 }
