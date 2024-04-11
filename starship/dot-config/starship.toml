@@ -1,5 +1,5 @@
 # Allow 1 second for commands to execute
-command_timeout = 1000
+command_timeout = 2000
 
 # [aws]
 # format = 'on [$symbol($profile )(\($region\) )]($style)'
