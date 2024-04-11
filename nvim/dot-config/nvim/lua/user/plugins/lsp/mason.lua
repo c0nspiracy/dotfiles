@@ -14,10 +14,13 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "html",
+        "bashls",
         "cssls",
+        "html",
         "lua_ls",
         "ruby_ls",
+        "vuels",
+        "yamlls",
       },
 
       -- auto-install configured servers (with lspconfig)
