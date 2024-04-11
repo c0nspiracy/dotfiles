@@ -58,3 +58,12 @@ bindkey -M viins '^R' fzf-history-widget
 
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
+
+eval "$(atuin init zsh --disable-up-arrow)"
+
+# Created by `pipx` on 2024-02-16 09:53:54
+# autoload -U bashcompinit
+# bashcompinit
+# eval "$(register-python-argcomplete pipx)"
+
+source /Users/rob/.config/broot/launcher/bash/br
