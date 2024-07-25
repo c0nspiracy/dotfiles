@@ -19,7 +19,6 @@ plugins=(
   direnv
   rbenv
   tmux
-  ripgrep
   terraform
   fzf
   zsh-syntax-highlighting
