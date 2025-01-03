@@ -113,12 +113,12 @@ return {
     })
 
     -- configure ruby linter
-    lspconfig["standardrb"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      cmd = { "bundle", "exec", "standardrb", "--lsp" },
-      root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
-    })
+    -- lspconfig["standardrb"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   cmd = { "bundle", "exec", "standardrb", "--lsp" },
+    --   root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
+    -- })
 
     lspconfig["bashls"].setup({
       capabilities = capabilities,
