@@ -13,6 +13,10 @@ local fonts = {
       'ss06=1', -- Slashed seven (7)
     },
   },
+  sf_pro = wezterm.font {
+    family = "SF Pro",
+    weight = "Regular",
+  },
 }
 
 return {
