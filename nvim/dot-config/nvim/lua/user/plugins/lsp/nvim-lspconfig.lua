@@ -105,7 +105,7 @@ return {
     })
 
     -- configure ruby server
-    lspconfig["ruby_ls"].setup({
+    lspconfig["ruby_lsp"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       cmd = { "bundle", "exec", "ruby-lsp" },

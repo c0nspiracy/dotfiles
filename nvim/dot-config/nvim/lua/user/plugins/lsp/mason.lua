@@ -18,7 +18,7 @@ return {
         "cssls",
         "html",
         "lua_ls",
-        "ruby_ls",
+        "ruby_lsp",
         "vuels",
         "yamlls",
       },
