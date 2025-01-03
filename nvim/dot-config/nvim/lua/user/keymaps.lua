@@ -37,6 +37,6 @@ keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 
 -- Document the prefix key in which-key
 local wk = require("which-key")
-wk.register({
-  ["<leader>h"] = { name = "+gitsigns" },
+wk.add({
+  { "<leader>h", group = "+gitsigns" },
 })
