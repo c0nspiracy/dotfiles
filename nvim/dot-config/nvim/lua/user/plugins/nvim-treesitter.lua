@@ -4,7 +4,6 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/playground",
   },
   config = function()
     vim.opt.foldmethod = "expr"
