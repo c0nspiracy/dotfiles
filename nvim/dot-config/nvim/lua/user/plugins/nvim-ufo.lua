@@ -5,7 +5,7 @@ return {
     local ufo = require("ufo")
 
     -- Using ufo provider for folding requires a larger value than default
-    vim.opt.foldlevel = 99 
+    vim.opt.foldlevel = 99
     vim.opt.foldlevelstart = 99
     vim.opt.foldenable = true
 
