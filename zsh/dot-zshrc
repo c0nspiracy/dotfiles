@@ -17,13 +17,11 @@ plugins=(
   last-working-dir
   zoxide
   direnv
-  rbenv
   tmux
   terraform
   fzf
   zsh-syntax-highlighting
   zsh-autosuggestions
-  nvm
   docker
   vi-mode
 )
@@ -31,9 +29,9 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/source/junegunn/fzf-git/fzf-git.sh
 
 alias vim=nvim
-alias l="exa --icons"
-alias ll="exa --long --icons --git"
-alias la="exa --long --icons --git --all"
+alias l="eza --icons"
+alias ll="eza --long --icons --git"
+alias la="eza --long --icons --git --all"
 
 alias lv="NVIM_APPNAME=LazyVim nvim"
 alias calude=claude
@@ -74,7 +72,5 @@ source /Users/rob/.config/broot/launcher/bash/br
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
-
-export PATH="$PATH:$HOME/.local/bin"
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
