@@ -13,6 +13,7 @@ return {
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "css",
+        "glsl",
         "html",
         "javascript",
         "json",

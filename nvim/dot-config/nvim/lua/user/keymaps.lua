@@ -40,3 +40,9 @@ local wk = require("which-key")
 wk.add({
   { "<leader>h", group = "+gitsigns" },
 })
+
+-- Debugger
+keymap("n", "<leader>dt", ":lua require('dapui').toggle()<CR>", opts)
+keymap("n", "<leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opts)
+keymap("n", "<leader>dc", ":lua require('dap').continue()<CR>", opts)
+keymap("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", opts)
