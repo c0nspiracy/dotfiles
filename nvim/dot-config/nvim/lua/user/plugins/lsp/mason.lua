@@ -17,6 +17,7 @@ return {
         "bashls",
         "cssls",
         "html",
+        "jsonls",
         "lua_ls",
         "ruby_lsp",
         "vuels",
