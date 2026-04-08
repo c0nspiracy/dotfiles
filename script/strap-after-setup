@@ -14,7 +14,9 @@ stow_directory() {
 
 stow_directory "bin"
 stow_directory "brew-aliases"
+stow_directory "ghostty"
 stow_directory "irb"
+stow_directory "mise"
 stow_directory "nvim"
 stow_directory "script"
 stow_directory "starship"
