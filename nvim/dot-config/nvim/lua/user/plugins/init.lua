@@ -10,12 +10,8 @@ return {
 
   "nvim-tree/nvim-web-devicons",
 
-  -- defaults
-  "tpope/vim-sensible",
-
   -- tpope
   "tpope/vim-abolish",
-  "tpope/vim-commentary",
   "tpope/vim-obsession",
   "tpope/vim-rails",
   "tpope/vim-surround",
