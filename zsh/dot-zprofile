@@ -9,9 +9,6 @@ export PATH="$PATH:/Users/rob/.local/bin"
 
 export PATH="$PATH:$HOME/go/bin"
 
-export ASDF_DATA_DIR="/Users/rob/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
-
 # gnu-sed
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
