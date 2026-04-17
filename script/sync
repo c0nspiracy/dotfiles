@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+DOTFILES="$HOME/.dotfiles"
+
+"$DOTFILES/script/setup"
+"$DOTFILES/script/strap-after-setup"

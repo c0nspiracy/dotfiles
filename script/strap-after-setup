@@ -24,9 +24,11 @@ stow_directory "glow"
 stow_directory "irb"
 stow_directory "mise"
 stow_directory "nvim"
-stow_directory "script"
 stow_directory "starship"
 stow_directory "tmux"
 stow_directory "zsh"
+
+# Wire up the repo's tracked hooks directory (idempotent)
+git -C "$HOME/.dotfiles" config --local core.hooksPath hooks
 
 mise install
