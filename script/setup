@@ -25,3 +25,10 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   echo "Installing Tmux Plugin Manager"
   sh -c "$(git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins)"
 fi
+
+# catppuccin/tmux v2 is managed manually (not via TPM) so we control load order.
+# To upgrade: git -C "$HOME/.config/tmux/plugins/catppuccin/tmux" fetch --tags && git checkout vX.Y.Z
+if [ ! -d "$HOME/.config/tmux/plugins/catppuccin/tmux" ]; then
+  echo "Installing catppuccin/tmux"
+  git clone -b v2.3.0 https://github.com/catppuccin/tmux.git "$HOME/.config/tmux/plugins/catppuccin/tmux"
+fi
