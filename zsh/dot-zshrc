@@ -25,6 +25,7 @@ plugins=(
   docker
   vi-mode
 )
+zstyle ':omz:update' mode disabled
 source $ZSH/oh-my-zsh.sh
 source $HOME/source/junegunn/fzf-git/fzf-git.sh
 
