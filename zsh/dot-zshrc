@@ -6,6 +6,17 @@ HISTFILE=~/.zsh_history
 HISTSIZE=500000
 SAVEHIST=$HISTSIZE
 
+# Some OMZ plugins (docker, mise, etc.) write completion caches into $ZSH_CACHE_DIR.
+# OMZ used to set this to $ZSH/cache; provide a sane default now that OMZ is gone.
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+[[ -d $ZSH_CACHE_DIR/completions ]] || mkdir -p $ZSH_CACHE_DIR/completions
+fpath=($ZSH_CACHE_DIR/completions $fpath)
+
+# Initialise the completion system *before* loading plugins so they can call compdef.
+# `-C` skips the dump-validity check (recovered automatically if zcompdump becomes corrupt).
+autoload -Uz compinit
+compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
+
 # Load plugins via antidote — generates a static bundle when plugins.txt is newer.
 # Requires `brew install antidote`.
 _zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
@@ -14,11 +25,6 @@ if [[ ! ${_zsh_plugins}.zsh -nt ${_zsh_plugins}.txt ]]; then
   antidote bundle <${_zsh_plugins}.txt >|${_zsh_plugins}.zsh
 fi
 source ${_zsh_plugins}.zsh
-
-# Initialise the completion system once after all fpath modifications.
-# `-C` skips the dump-validity check (recovered automatically if zcompdump becomes corrupt).
-autoload -Uz compinit
-compinit -C -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
 
 source $HOME/source/junegunn/fzf-git/fzf-git.sh
 
