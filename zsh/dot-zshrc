@@ -1,6 +1,6 @@
 # Make Homebrew's completions available to zsh
 # See https://docs.brew.sh/Shell-Completion
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=500000
