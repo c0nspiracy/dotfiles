@@ -48,8 +48,26 @@ function rspec-bisect() {
   docker exec -i -t -e COVERAGE=false $DOCKER_CONTAINER bundle exec rspec --no-profile --seed $seed --bisect "${=files}" 2>/dev/null
 }
 
+# Cache slow `<tool> init zsh` integrations to avoid forking on every shell start.
+# Cache invalidates when the resolved binary path changes (e.g. after a Homebrew upgrade).
+_zsh_init_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-init"
+[[ -d $_zsh_init_cache_dir ]] || mkdir -p $_zsh_init_cache_dir
+
+_cached_init() {
+  # Usage: _cached_init <cache-key> <binary-name> <command...>
+  local key=$1 bin=$2
+  shift 2
+  local binpath=${$(command -v $bin 2>/dev/null):A}
+  [[ -z $binpath ]] && return
+  local cache=$_zsh_init_cache_dir/$key.zsh
+  if [[ ! -s $cache || $binpath -nt $cache ]]; then
+    "$@" >| $cache
+  fi
+  source $cache
+}
+
 # Initialise starship prompt
-eval "$(starship init zsh)"
+_cached_init starship starship starship init zsh
 
 # bindkey -s ^f "tmux-sessionizer\n"
 bindkey -M vicmd v edit-command-line
@@ -60,7 +78,7 @@ bindkey -M viins '^R' fzf-history-widget
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 
-eval "$(atuin init zsh --disable-up-arrow)"
+_cached_init atuin atuin atuin init zsh --disable-up-arrow
 
 # Created by `pipx` on 2024-02-16 09:53:54
 # autoload -U bashcompinit
@@ -72,6 +90,6 @@ source /Users/rob/.config/broot/launcher/bash/br
 # Added 22/09/2025 for carapace
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
+_cached_init carapace carapace carapace _carapace
 
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+_cached_init wt wt command wt config shell init zsh
