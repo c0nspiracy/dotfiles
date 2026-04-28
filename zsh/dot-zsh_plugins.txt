@@ -1,0 +1,23 @@
+# antidote plugin manifest — stowed to ~/.zsh_plugins.txt
+# antidote bundles this into ~/.zsh_plugins.zsh (regenerated when this file changes)
+# https://antidote.sh/
+
+# OMZ libs that other plugins assume are loaded
+ohmyzsh/ohmyzsh path:lib/git.zsh
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+
+# OMZ plugins (same set previously loaded via plugins=())
+# Note: mise, fzf, zoxide are intentionally NOT loaded here — they're cached via
+# _cached_init in zshrc, which is faster than re-running their `eval "$(... init)"`
+# every shell.
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/last-working-dir
+ohmyzsh/ohmyzsh path:plugins/direnv
+ohmyzsh/ohmyzsh path:plugins/tmux
+ohmyzsh/ohmyzsh path:plugins/terraform
+ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/vi-mode
+
+# Standalone plugins (already what custom OMZ plugins pointed to)
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions

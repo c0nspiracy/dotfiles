@@ -6,27 +6,20 @@ HISTFILE=~/.zsh_history
 HISTSIZE=500000
 SAVEHIST=$HISTSIZE
 
-# Don't dump completion caches to $HOME
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+# Load plugins via antidote — generates a static bundle when plugins.txt is newer.
+# Requires `brew install antidote`.
+_zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+if [[ ! ${_zsh_plugins}.zsh -nt ${_zsh_plugins}.txt ]]; then
+  source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+  antidote bundle <${_zsh_plugins}.txt >|${_zsh_plugins}.zsh
+fi
+source ${_zsh_plugins}.zsh
 
-# Initialise oh-my-zsh
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(
-  mise
-  git
-  last-working-dir
-  zoxide
-  direnv
-  tmux
-  terraform
-  fzf
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  docker
-  vi-mode
-)
-zstyle ':omz:update' mode disabled
-source $ZSH/oh-my-zsh.sh
+# Initialise the completion system once after all fpath modifications.
+# `-C` skips the dump-validity check (recovered automatically if zcompdump becomes corrupt).
+autoload -Uz compinit
+compinit -C -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+
 source $HOME/source/junegunn/fzf-git/fzf-git.sh
 
 alias vim=nvim
@@ -89,12 +82,11 @@ bindkey -M viins '^[^?' backward-kill-word   # Alt-Backspace: delete previous wo
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 
+# Tool integrations — previously loaded as OMZ plugins, now cached directly
+_cached_init mise mise mise activate zsh
+_cached_init fzf fzf fzf --zsh
+_cached_init zoxide zoxide zoxide init zsh
 _cached_init atuin atuin atuin init zsh --disable-up-arrow
-
-# Created by `pipx` on 2024-02-16 09:53:54
-# autoload -U bashcompinit
-# bashcompinit
-# eval "$(register-python-argcomplete pipx)"
 
 source /Users/rob/.config/broot/launcher/bash/br
 
