@@ -94,6 +94,22 @@ ls **/*.rb~**/spec/*    # exclusion via ~
 ls ^*.bak               # negation via ^
 ```
 
+## Setup gotchas (macOS + vi-mode)
+
+Two non-obvious things have to be in place for the `Alt-X` bindings above to work
+on a Mac with vi-mode active:
+
+1. **Ghostty** (or whichever terminal): `macos-option-as-alt = true` so that Option
+   sends an Esc-prefixed escape sequence (`Option-F` → `^[f`) instead of a special
+   character (`Option-F` → `ƒ`).
+2. **zshrc**: vi insert mode (`viins`) inherits almost no Alt-bindings from the
+   default zsh setup — `forward-word`, `backward-word`, `kill-word`,
+   `insert-last-word` etc. are all unbound in viins. They have to be added
+   explicitly with `bindkey -M viins '^[f' forward-word` etc. (already done).
+
+If an `Alt-X` binding stops working unexpectedly, check `bindkey -M viins '^[X'`
+to see what (if anything) it's bound to in the active keymap.
+
 ## Discovering more
 
 | Command                  | Shows                                              |
