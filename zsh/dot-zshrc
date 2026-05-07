@@ -54,13 +54,17 @@ _zsh_init_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-init"
 
 _cached_init() {
   # Usage: _cached_init <cache-key> <binary-name> <command...>
+  # Regenerates when the resolved binary path, its mtime, or the command args change.
   local key=$1 bin=$2
   shift 2
   local binpath=${$(command -v $bin 2>/dev/null):A}
   [[ -z $binpath ]] && return
   local cache=$_zsh_init_cache_dir/$key.zsh
-  if [[ ! -s $cache || $binpath -nt $cache ]]; then
-    "$@" >| $cache
+  local marker="# _cached_init: ${(j: :)@}"
+  local first_line=""
+  [[ -s $cache ]] && IFS= read -r first_line < $cache
+  if [[ ! -s $cache || $binpath -nt $cache || $first_line != $marker ]]; then
+    { print -r -- "$marker"; "$@" } >| $cache
   fi
   source $cache
 }
