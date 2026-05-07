@@ -75,6 +75,17 @@ bindkey -M emacs '^R' fzf-history-widget
 bindkey -M vicmd '^R' fzf-history-widget
 bindkey -M viins '^R' fzf-history-widget
 
+# Vi insert mode lacks the word-related Alt-bindings that emacs mode has.
+# Restore the common ones so they work without dropping to normal mode.
+bindkey -M viins '^[f' forward-word          # Alt-F: forward by word (also accepts one word of autosuggestion)
+bindkey -M viins '^[F' forward-word
+bindkey -M viins '^[b' backward-word         # Alt-B: backward by word
+bindkey -M viins '^[B' backward-word
+bindkey -M viins '^[d' kill-word             # Alt-D: delete next word
+bindkey -M viins '^[D' kill-word
+bindkey -M viins '^[.' insert-last-word      # Alt-.: insert last argument of previous command (repeat to walk back)
+bindkey -M viins '^[^?' backward-kill-word   # Alt-Backspace: delete previous word
+
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 
