@@ -13,9 +13,13 @@ export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 fpath=($ZSH_CACHE_DIR/completions $fpath)
 
 # Initialise the completion system *before* loading plugins so they can call compdef.
-# `-C` skips the dump-validity check (recovered automatically if zcompdump becomes corrupt).
+# Rebuild the dump once a day; otherwise skip the validity check for a fast warm start.
 autoload -Uz compinit
-compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
+if [[ -n $ZSH_CACHE_DIR/zcompdump(#qN.mh+24) ]]; then
+  compinit -d "$ZSH_CACHE_DIR/zcompdump"
+else
+  compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
+fi
 
 # Load plugins via antidote — generates a static bundle when plugins.txt is newer.
 # Requires `brew install antidote`.
