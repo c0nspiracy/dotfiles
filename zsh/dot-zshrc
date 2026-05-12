@@ -1,3 +1,7 @@
+# Required for the (#q...) glob qualifier used by the compinit freshness check
+# and the antidote staleness check below.
+setopt extended_glob
+
 # Make Homebrew's completions available to zsh
 # See https://docs.brew.sh/Shell-Completion
 FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
@@ -29,6 +33,20 @@ if [[ ! ${_zsh_plugins}.zsh -nt ${_zsh_plugins}.txt ]]; then
   antidote bundle <${_zsh_plugins}.txt >|${_zsh_plugins}.zsh
 fi
 source ${_zsh_plugins}.zsh
+
+# Warn if it's been >90 days since `antidote update` (or initial install).
+# A preexec hook refreshes the stamp whenever the user runs `antidote update`.
+() {
+  local stamp="$ZSH_CACHE_DIR/antidote-updated"
+  if [[ ! -e $stamp ]]; then
+    touch $stamp
+  elif [[ -n $stamp(#qN.mh+2160) ]]; then
+    print -P "%F{yellow}[antidote]%f plugins haven't been updated in >90 days — consider running %B\`antidote update\`%b"
+  fi
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _antidote_stamp_on_update
+_antidote_stamp_on_update() { [[ $1 == "antidote update"* ]] && touch "$ZSH_CACHE_DIR/antidote-updated" }
 
 # Cache slow `<tool> init zsh` integrations to avoid forking on every shell start.
 # Regenerates when the resolved binary path, its mtime, or the command args change.
