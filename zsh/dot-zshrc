@@ -30,35 +30,13 @@ if [[ ! ${_zsh_plugins}.zsh -nt ${_zsh_plugins}.txt ]]; then
 fi
 source ${_zsh_plugins}.zsh
 
-source $HOME/source/junegunn/fzf-git/fzf-git.sh
-
-alias vim=nvim
-alias l="eza --icons"
-alias ll="eza --long --icons --git"
-alias la="eza --long --icons --git --all"
-
-alias lv="NVIM_APPNAME=LazyVim nvim"
-alias calude=claude
-
-function rspec-docker() {
-  docker exec -i -t -e COVERAGE=false -e RAILS_MAX_THREADS=2 $DOCKER_CONTAINER bundle exec rspec --no-profile "$@" 2>/dev/null
-}
-
-function rspec-bisect() {
-  files=$(xq "$@" -x /testsuite/testcase/@file | sort -u | paste -sd ' ' -)
-  seed=$(xq "$@" -x "/testsuite/properties/property[@name='seed']//@value")
-
-  docker exec -i -t -e COVERAGE=false $DOCKER_CONTAINER bundle exec rspec --no-profile --seed $seed --bisect "${=files}" 2>/dev/null
-}
-
 # Cache slow `<tool> init zsh` integrations to avoid forking on every shell start.
-# Cache invalidates when the resolved binary path changes (e.g. after a Homebrew upgrade).
+# Regenerates when the resolved binary path, its mtime, or the command args change.
 _zsh_init_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-init"
 [[ -d $_zsh_init_cache_dir ]] || mkdir -p $_zsh_init_cache_dir
 
 _cached_init() {
   # Usage: _cached_init <cache-key> <binary-name> <command...>
-  # Regenerates when the resolved binary path, its mtime, or the command args change.
   local key=$1 bin=$2
   shift 2
   local binpath=${$(command -v $bin 2>/dev/null):A}
@@ -73,10 +51,49 @@ _cached_init() {
   source $cache
 }
 
-# Initialise starship prompt
+# Aliases
+
+alias vim=nvim
+alias l="eza --icons"
+alias ll="eza --long --icons --git"
+alias la="eza --long --icons --git --all"
+alias lv="NVIM_APPNAME=LazyVim nvim"
+alias calude=claude
+
+# Functions
+
+function rspec-docker() {
+  docker exec -i -t -e COVERAGE=false -e RAILS_MAX_THREADS=2 $DOCKER_CONTAINER bundle exec rspec --no-profile "$@" 2>/dev/null
+}
+
+function rspec-bisect() {
+  files=$(xq "$@" -x /testsuite/testcase/@file | sort -u | paste -sd ' ' -)
+  seed=$(xq "$@" -x "/testsuite/properties/property[@name='seed']//@value")
+
+  docker exec -i -t -e COVERAGE=false $DOCKER_CONTAINER bundle exec rspec --no-profile --seed $seed --bisect "${=files}" 2>/dev/null
+}
+
+# Tool integrations
+
 _cached_init starship starship starship init zsh
+_cached_init mise mise mise activate zsh
+_cached_init fzf fzf fzf --zsh
+source $HOME/source/junegunn/fzf-git/fzf-git.sh
+_cached_init zoxide zoxide zoxide init zsh
+_cached_init atuin atuin atuin init zsh
+source $XDG_CONFIG_HOME/broot/launcher/bash/br
+
+# carapace completion bridge — must set CARAPACE_BRIDGES before init runs
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+_cached_init carapace carapace carapace _carapace
+
+_cached_init wt wt command wt config shell init zsh
+
+# Keybindings — run after tool inits so the widgets they reference are defined
 
 bindkey -M vicmd v edit-command-line
+bindkey -M vicmd '^R' atuin-search-vicmd     # atuin only binds emacs/viins by default
 
 # Vi insert mode lacks the word-related Alt-bindings that emacs mode has.
 # Restore the common ones so they work without dropping to normal mode.
@@ -91,19 +108,3 @@ bindkey -M viins '^[^?' backward-kill-word   # Alt-Backspace: delete previous wo
 
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
-
-# Tool integrations — previously loaded as OMZ plugins, now cached directly
-_cached_init mise mise mise activate zsh
-_cached_init fzf fzf fzf --zsh
-_cached_init zoxide zoxide zoxide init zsh
-_cached_init atuin atuin atuin init zsh
-bindkey -M vicmd '^R' atuin-search-vicmd     # atuin only binds emacs/viins by default
-
-source $XDG_CONFIG_HOME/broot/launcher/bash/br
-
-# Added 22/09/2025 for carapace
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-_cached_init carapace carapace carapace _carapace
-
-_cached_init wt wt command wt config shell init zsh
