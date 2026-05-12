@@ -76,7 +76,6 @@ _cached_init() {
 # Initialise starship prompt
 _cached_init starship starship starship init zsh
 
-# bindkey -s ^f "tmux-sessionizer\n"
 bindkey -M vicmd v edit-command-line
 
 # Vi insert mode lacks the word-related Alt-bindings that emacs mode has.
