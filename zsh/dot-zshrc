@@ -96,7 +96,7 @@ _cached_init zoxide zoxide zoxide init zsh
 _cached_init atuin atuin atuin init zsh
 bindkey -M vicmd '^R' atuin-search-vicmd     # atuin only binds emacs/viins by default
 
-source /Users/rob/.config/broot/launcher/bash/br
+source $XDG_CONFIG_HOME/broot/launcher/bash/br
 
 # Added 22/09/2025 for carapace
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
