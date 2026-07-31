@@ -1,0 +1,33 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+# Nudge the built-in catppuccin towards the macchiato flavour used in tmux
+[theme.custom]
+accent = "#8aadf4"
+red = "#ed8796"
+green = "#a6da95"
+blue = "#8aadf4"
+yellow = "#eed49f"
+
+[keys]
+# Same leader as tmux
+prefix = "ctrl+a"
+# Native Herdr keys plus tmux muscle-memory equivalents
+# Splits: | side-by-side, - stacked (as in tmux)
+split_vertical = ["prefix+v", "prefix+|"]
+split_horizontal = "prefix+minus"
+zoom = ["prefix+z", "prefix+m"]
+detach = ["prefix+q", "prefix+d"]
+# Worktree dialogs: new_worktree defaults to prefix+shift+g
+open_worktree = "prefix+shift+o"
+remove_worktree = "prefix+shift+u"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "spaces"
+# tmux config disables mouse-drag copying; keep selection but don't auto-copy
+copy_on_select = false
+
+[ui.toast]
+delivery = "terminal"
