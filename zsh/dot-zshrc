@@ -77,6 +77,8 @@ alias ll="eza --long --icons --git"
 alias la="eza --long --icons --git --all"
 alias lv="NVIM_APPNAME=LazyVim nvim"
 alias calude=claude
+# claude uses the work account (default ~/.claude); this one uses the personal Pro login
+alias claude-personal="CLAUDE_CONFIG_DIR=$HOME/.claude-personal claude"
 
 # Functions
 
