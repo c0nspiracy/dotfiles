@@ -2,6 +2,9 @@
 
 set -e
 
+# Pull in submodules (e.g. ghostty/dot-config/ghostty/shaders) before stowing
+git -C "$HOME/.dotfiles" submodule update --init --recursive
+
 # Install Homebrew packages
 brew bundle --file="$HOME/.dotfiles/Brewfile"
 
