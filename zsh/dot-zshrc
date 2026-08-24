@@ -25,14 +25,17 @@ else
   compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
 fi
 
-# Load plugins via antidote — generates a static bundle when plugins.txt is newer.
+# Load plugins via antidote — generates a static bundle when plugins.txt is newer,
+# or when antidote's clone cache is missing/empty (e.g. wiped by a disk-cleanup tool).
 # Requires `brew install antidote`.
 _zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
-if [[ ! ${_zsh_plugins}.zsh -nt ${_zsh_plugins}.txt ]]; then
+_antidote_home="${ANTIDOTE_HOME:-$HOME/Library/Caches/antidote}"
+if [[ ! ${_zsh_plugins}.zsh -nt ${_zsh_plugins}.txt ]] || [[ -z ${_antidote_home}/**/.git(#qND/) ]]; then
   source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
   antidote bundle <${_zsh_plugins}.txt >|${_zsh_plugins}.zsh
 fi
 source ${_zsh_plugins}.zsh
+unset _antidote_home
 
 # Warn if it's been >90 days since `antidote update` (or initial install).
 # A preexec hook refreshes the stamp whenever the user runs `antidote update`.
