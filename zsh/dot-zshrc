@@ -105,8 +105,15 @@ _cached_init atuin atuin atuin init zsh
 _cached_init atuin-ai atuin atuin ai init zsh # binds `?` on an empty prompt to the AI assistant
 source $XDG_CONFIG_HOME/broot/launcher/bash/br
 
-# carapace completion bridge — must set CARAPACE_BRIDGES before init runs
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+# No CARAPACE_BRIDGES: carapace's native specs already cover every tool we
+# actually use (git, docker, kubectl, npm, aws, gh, ssh, ...). Bridging routes
+# everything else through a subprocess that re-shells to zsh's own completion
+# system just to get what compsys would've given directly — pure overhead,
+# and the likely source of intermittent Tab hangs.
+# Explicit unset: an old export lingers in the env of any shell/pane started
+# before this change (e.g. existing tmux/herdr panes) — a bare removal here
+# wouldn't clear an already-inherited value, only stop re-exporting it.
+unset CARAPACE_BRIDGES
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 _cached_init carapace carapace carapace _carapace
 
