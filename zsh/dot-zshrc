@@ -100,7 +100,9 @@ _cached_init mise mise mise activate zsh
 _cached_init fzf fzf fzf --zsh
 source $HOME/source/junegunn/fzf-git/fzf-git.sh
 _cached_init zoxide zoxide zoxide init zsh
+_cached_init atuin-pty-proxy atuin atuin pty-proxy init # renders atuin's popup without clearing scrollback
 _cached_init atuin atuin atuin init zsh
+_cached_init atuin-ai atuin atuin ai init zsh # binds `?` on an empty prompt to the AI assistant
 source $XDG_CONFIG_HOME/broot/launcher/bash/br
 
 # carapace completion bridge — must set CARAPACE_BRIDGES before init runs

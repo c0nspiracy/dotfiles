@@ -31,8 +31,14 @@ dialect = "uk"
 # sync_frequency = "10m"
 
 ## which search mode to use
-## possible values: prefix, fulltext, fuzzy, skim
-# search_mode = "fuzzy"
+## possible values: prefix, fulltext, fuzzy, skim, daemon-fuzzy
+## daemon-fuzzy uses the background daemon's in-memory index (see [daemon] below)
+search_mode = "daemon-fuzzy"
+
+## which keymap the search UI starts in
+## possible values: emacs, vim-normal, vim-insert, auto
+## auto follows the shell's current vi mode, which matches our vicmd ^R bind in .zshrc
+keymap_mode = "auto"
 
 ## which filter mode to use
 ## possible values: global, host, session, directory
@@ -40,7 +46,7 @@ dialect = "uk"
 
 ## With workspace filtering enabled, Atuin will filter for commands executed
 ## in any directory within a git repository tree (default: false)
-# workspaces = false
+workspaces = true
 
 ## which filter mode to use when atuin is invoked from a shell up-key binding
 ## the accepted values are identical to those of "filter_mode"
@@ -125,17 +131,31 @@ inline_height = 25
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
 enter_accept = true
 
-#[stats]
+## *Experimental* background daemon: keeps a hot in-memory search index
+## (required for search_mode = "daemon-fuzzy") and syncs without needing
+## a shell command to trigger it.
+[daemon]
+enabled = true
+autostart = true
+
+## AI assistant: press `?` on an empty prompt for a natural-language helper.
+## Requires shell integration (`atuin ai init`) in .zshrc, added separately.
+## send_cwd / send_last_command stay off by default — nothing extra is sent
+## unless turned on here.
+[ai]
+enabled = true
+
+[stats]
 # Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
-#common_subcommands = [
-#  "cargo",
-#  "go",
-#  "git",
-#  "npm",
-#  "yarn",
-#  "pnpm",
-#  "kubectl",
-#]
-# 
+common_subcommands = [
+  "git",
+  "docker",
+  "bundle",
+  "mise",
+  "npm",
+  "yarn",
+  "pnpm",
+]
+
 # Set commands that should be totally stripped and ignored from stats
-#common_prefix = ["sudo"]
+common_prefix = ["sudo"]
