@@ -1,8 +1,15 @@
 onboarding = false
 
+[terminal]
+# Set explicitly: when unset, herdr falls back to $SHELL, and if that's not an
+# absolute executable path it warns ("$SHELL -> ... not executable ...") and
+# falls back to a password db lookup on every new pane.
+default_shell = "/bin/zsh"
+
 [theme]
 name = "catppuccin"
 # Nudge the built-in catppuccin towards the macchiato flavour used in tmux
+auto_switch = false
 [theme.custom]
 accent = "#8aadf4"
 red = "#ed8796"
@@ -23,11 +30,45 @@ detach = ["prefix+q", "prefix+d"]
 open_worktree = "prefix+shift+o"
 remove_worktree = "prefix+shift+u"
 
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "herdr-file-viewer.open-file-viewer"
+description = "open file viewer in split"
+
+[[keys.command]]
+key = "prefix+shift+f"
+type = "plugin_action"
+command = "herdr-file-viewer.open-file-viewer-tab"
+description = "open file viewer in tab"
+
+# Override herdr's built-in "new worktree" key (prefix+shift+g) with worktrunk's
+# default-branch switch/create picker:
+[[keys.command]]
+key = "prefix+shift+g"
+type = "plugin_action"
+command = "worktrunk.open"
+description = "Worktree: switch / create from default branch"
+
+# Optional: bind current-branch creation separately.
+[[keys.command]]
+key = "prefix+shift+c"
+type = "plugin_action"
+command = "worktrunk.open-current"
+description = "Worktree: switch / create from current branch"
+
+[[keys.command]]
+key = "prefix+shift+d"
+type = "plugin_action"
+command = "worktrunk.remove"
+description = "Worktree: remove"
+
 [ui]
 show_agent_labels_on_pane_borders = true
-agent_panel_sort = "spaces"
+agent_panel_sort = "priority"
 # tmux config disables mouse-drag copying; keep selection but don't auto-copy
 copy_on_select = false
 
+status_indicators = "symbols"
 [ui.toast]
 delivery = "terminal"
