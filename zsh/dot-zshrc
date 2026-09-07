@@ -30,8 +30,11 @@ fi
 # Requires `brew install antidote`.
 _zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
 _antidote_home="${ANTIDOTE_HOME:-$HOME/Library/Caches/antidote}"
+# Sourced unconditionally (cheap — just function defs, no forking) so the
+# `antidote` command itself is available interactively, e.g. for the
+# `antidote update` the staleness warning below tells you to run.
+source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
 if [[ ! ${_zsh_plugins}.zsh -nt ${_zsh_plugins}.txt ]] || [[ -z ${_antidote_home}/**/.git(#qND/) ]]; then
-  source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
   antidote bundle <${_zsh_plugins}.txt >|${_zsh_plugins}.zsh
 fi
 source ${_zsh_plugins}.zsh
