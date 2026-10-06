@@ -17,7 +17,7 @@ This is a macOS dotfiles repository managed with **GNU Stow**. Each top-level di
 - `script/setup` — pre-setup (Oh My Zsh, plugins, tpm, fzf-git)
 - `script/strap-after-setup` — stows all packages into `$HOME`
 
-Not all top-level directories are stowed automatically. `atuin`, `bat`, and `sketchybar` are present but not in the strap-after-setup script — they may need manual stowing.
+Not all top-level directories are stowed automatically. `atuin` and `bat` are present but not in the strap-after-setup script — they may need manual stowing.
 
 ## Neovim Configuration
 
